@@ -63,6 +63,7 @@ dynamics.Authenticate({ username:"foo", password: "bar" }, function(err, result)
 	if (err) return console.error (err);
 	console.log (result.auth);
 });
+```
 
 #### Create(options, callback)
 
@@ -92,3 +93,8 @@ This method should be used to create a relation between entities.
 
 This method should be used to remove a relation between entities.
 
+### Task for next release ( not supportted by this version )
+
+* Support for new STS/IP (current version supports live.com)
+* Create/Update entities with subentities
+*
