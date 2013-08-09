@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<DeviceAddRequest>
+  <ClientInfo name="{newguid}" version="1.0" />
+  <Authentication>
+    <Membername>{username}</Membername>
+    <Password>{password}</Password>
+  </Authentication>
+</DeviceAddRequest>
