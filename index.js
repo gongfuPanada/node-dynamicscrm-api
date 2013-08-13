@@ -44,8 +44,9 @@ var Dynamics = function (settings) {
         util.Execute(options, cb);
     };
 
-    // adds helper methods for each entity set.
-    util.hook(this);
+    this.Delete = function(options, cb) {
+        util.Delete(options, cb);
+    };
 };
 
 module.exports = Dynamics;
