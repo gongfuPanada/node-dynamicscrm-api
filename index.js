@@ -37,7 +37,7 @@ var Dynamics = function (settings) {
     };
 
     this.Disassociate = function(options, cb) {
-        util.count(options, cb);
+        util.Disassociate(options, cb);
     };
 
     this.Execute = function(options, cb) {
