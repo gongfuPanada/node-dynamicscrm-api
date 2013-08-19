@@ -69,32 +69,197 @@ dynamics.Authenticate({ username:"foo", password: "bar" }, function(err, result)
 
 This method should be used to create new entities such as leads, contacts, etc.
 
+**Parameters:**
+* `options`: A required object instance containing authentication's parameters:
+	* `LogicalName`: String. The name of the entity to create (Lead, Contact, etc. )
+	* `Attributes`: Array of Key-Value strings .
+	* `FormatedValues`: Array of Key-Value strings.
+* `callback`: A required function for callback.
+
+```
+	var options = {};
+	options.Attributes = [ { key:'lastname' , value :'Doe'} , { key:'firstname' , value :'John'}];
+	options.LogicalName = 'lead';
+
+	dynamics.Create(options, function(err, result) 
+	{
+		...	
+``` 
+
 #### Update(options, callback)
 
 This method should be used to update an entity.
+
+**Parameters:**
+* `options`: A required object instance containing authentication's parameters:
+	* `id`: Entity unique identifier.
+	* `LogicalName`: String. The name of the entity to create (Lead, Contact, etc. )
+	* `Attributes`: Array of Key-Value strings .
+	* `FormatedValues`: Array of Key-Value strings.
+* `callback`: A required function for callback.
+
+```
+	var options = {};
+	options.id = '00000000-dddd-eeee-iiii-111111111111';	
+	options.Attributes = [ { key:'companyname' , value :'Kidozen'}];
+	options.LogicalName = 'lead';
+
+	dynamics.Update(options, function(err, result) 
+	{
+		...	
+``` 
 
 #### Delete(options, callback)
 
 This method should be used to delete an entity.
 
+**Parameters:**
+* `options`: A required object instance containing authentication's parameters:
+	* `id`: Entity unique identifier.
+	* `EntityName`: String. The name of the entity to create (Lead, Contact, etc. )
+* `callback`: A required function for callback.
+
+```
+	var options = {};
+	options.id = '00000000-dddd-eeee-iiii-111111111111';	
+	options.EntityName = 'lead';
+
+	dynamics.Delete(options, function(err, result) 
+	{
+		...	
+``` 
+
 #### Retrieve(options, callback)
 
 This method should be used to retrieve a single entity.
+
+**Parameters:**
+* `options`: A required object instance containing authentication's parameters:
+	* `id`: Entity unique identifier.
+	* `EntityName`: String. The name of the entity to create (Lead, Contact, etc. )
+	* `ColumnSet`: Array of strings with the names of the columns to retrieve.	
+* `callback`: A required function for callback.
+
+```
+	var options = {};
+	options.id = '00000000-dddd-eeee-iiii-111111111111';	
+	options.EntityName = 'lead';
+	options.ColumnSet = ['firstname'];
+	
+	dynamics.Retrieve(options, function(err, result) 
+	{
+		...	
+``` 
 
 #### RetrieveMultiple(options, callback)
 
 This method should be used to retrieve multiple entities.
 
+**Parameters:**
+* `options`: A required object instance containing authentication's parameters:
+	* `id`: Entity unique identifier.
+	* `EntityName`: String. The name of the entity to create (Lead, Contact, etc. )
+	* `ColumnSet`: Array of strings with the names of the columns to retrieve.	
+* `callback`: A required function for callback.
+
+```
+	var options = {};
+	options.id = '00000000-dddd-eeee-iiii-111111111111';	
+	options.EntityName = 'lead';
+	options.ColumnSet = ['firstname'];
+	
+	dynamics.RetrieveMultiple(options, function(err, result) 
+	{
+		...	
+``` 
+
 #### Associate(options, callback)
 
 This method should be used to create a relation between entities.
 
+**Parameters:**
+* `options`: A required object instance containing authentication's parameters:
+	* `EntityId`: Entity unique identifier.
+	* `EntityName`: String. The name of the entity to create (Lead, Contact, etc. )
+	* `RelationShip`: Object with the crm relationship details, such as schemaName ({ SchemaName: 'contact_customer_accounts'}).	
+	* `RelatedEntities`: Array of related entities objects with the following values:
+	* * `Id`: Related entity unique identifier.
+	* * `LogicalName`: Name of the related entity.		
+* `callback`: A required function for callback.
+
+```
+	var options = {};
+	options.EntityId = '00000000-dddd-eeee-iiii-111111111111';	
+	options.EntityName = 'account';
+	options.RelationShip = { SchemaName: 'contact_customer_accounts'};
+	options.RelatedEntities = [{Id : '00000000-dddd-0000-0000-111111111111',LogicalName : 'contact'}];
+	
+	dynamics.Associate(options, function(err, result) 
+	{
+		...	
+``` 
+
 #### Disassociate(options, callback)
 
-This method should be used to remove a relation between entities.
+**Parameters:**
+* `options`: A required object instance containing authentication's parameters:
+	* `EntityId`: Entity unique identifier.
+	* `EntityName`: String. The name of the entity to create (Lead, Contact, etc. )
+	* `RelationShip`: Object with the crm relationship details, such as schemaName ({ SchemaName: 'contact_customer_accounts'}).	
+	* `RelatedEntities`: Array of related entities objects with the following values:
+	* * `Id`: Related entity unique identifier.
+	* * `LogicalName`: Name of the related entity.	
+* `callback`: A required function for callback.
 
-### Task for next release ( not supportted by this version )
+```
+	var options = {};
+	options.EntityId = '00000000-dddd-eeee-iiii-111111111111';	
+	options.EntityName = 'account';
+	options.RelationShip = { SchemaName: 'contact_customer_accounts'};
+	options.RelatedEntities = [{Id : '00000000-dddd-0000-0000-111111111111',LogicalName : 'contact'}];
+	
+	dynamics.Disassociate(options, function(err, result) 
+	{
+		...	
+``` 
 
-* Support for new STS/IP (current version supports live.com)
-* Create/Update entities with subentities
-*
+#### Execute(options, callback)
+
+**Parameters:**
+* `options`: A required object instance containing authentication's parameters:
+	* `RequestName`: Name of the crm method to execute.
+	* `Parameters`: : Array of Key-Value strings with the method's parameters names and values.	
+* `callback`: A required function for callback.
+
+```
+	var options = {};
+	options.RequestName = 'account';
+	
+	dynamics.Execute(options, function(err, result) 
+	{
+		...	
+``` 
+
+
+#License 
+
+Copyright (c) 2013 KidoZen, inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
