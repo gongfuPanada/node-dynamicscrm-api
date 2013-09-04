@@ -23,7 +23,7 @@
     "license": "MIT",
     "dependencies": 
         {
-            "node_xslt" : "0.1.8",
+            "traverse": "0.6.5",            
             "xml2json": "0.3.2",
             "xpath": "0.0.5",
             "xmldom": "0.1.16",
