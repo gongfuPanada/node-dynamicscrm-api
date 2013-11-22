@@ -1,6 +1,6 @@
 {
     "name": "dynamicscrm-api",
-    "version": "0.0.2",
+    "version": "0.0.1",
     "description": "Pure SOAP module that allows to invoke Microsoft Dynamics CRM Online services",
     "author": "Kidozen <support@kidozen.com>",
     "contributors": [
@@ -24,7 +24,7 @@
     "dependencies": 
         {
             "traverse": "0.6.5",            
-            "xml2js": "0.2.8",
+            "xml2json": "0.3.2",
             "xpath": "0.0.5",
             "xmldom": "0.1.16",
             "node-uuid": "1.4.0",
